@@ -8,7 +8,7 @@ import ast
 
 # ========== CONFIG ==========
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-SERVER_PATH = r"../intro-mcp-with-python-sdk/main.py" #path to your mcp server
+SERVER_PATH = r"../docs-mcp-server-pythonsdk/main.py" #path to your mcp server
 # ============================
 
 # Start MCP tool server via stdio

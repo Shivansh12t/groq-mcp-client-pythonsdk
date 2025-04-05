@@ -3,10 +3,12 @@ from mcp.client.stdio import stdio_client
 import trio
 import sys
 
+SERVER_PATH = r"../docs-mcp-server-pythonsdk/main.py" #path to your mcp server
+
 # defining how to start the server
 server_parameters = StdioServerParameters(
     command="uv",
-    args=["run",r"../intro-mcp-with-python-sdk/main.py"]
+    args=["run",SERVER_PATH]
 )
 
 # define async client function
@@ -27,12 +29,12 @@ async def run():
             tool_names = [tool.name for tool in tools]
             print(tool_names)
             if "get_docs" in tool_names:
-                # result = await session.call_tool("get_docs", arguments={
-                #     "query": "retriever",
-                #     "library": "langchain"
-                # })
-                # result_string = "".join([c.text for c in result.content if c.type == "text"])
-                # print("📚 Tool result:\n", result_string[:1000]) # first thousand characters
+                result = await session.call_tool("get_docs", arguments={
+                    "query": "retriever",
+                    "library": "langchain"
+                })
+                result_string = "".join([c.text for c in result.content if c.type == "text"])
+                print("📚 Tool result:\n", result_string[:1000]) # first thousand characters
                 pass
             else:
                 print("⚠️ Tool 'get_docs' not found!")
